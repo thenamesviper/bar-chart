@@ -1,5 +1,16 @@
 svg {
-    border: 1px dashed red;
+    background-color: darkgray;
+    box-shadow: 8px 8px black
+}
+
+#title {
+    font-size: 3em;
+}
+
+#legend {
+    width: 300px;
+    height: 200px;
+    fill: white;
 }
 
 .Rape rect {
@@ -18,3 +29,25 @@ svg {
     fill: $barFour;
 }
 
+.axis path {
+    display: none;
+}
+
+.x .tick line {
+    display: none;
+}
+
+text {
+    font-weight: bold;
+}
+.x text { 
+    font-size: 2em;
+}
+
+.y text {
+    font-size: 1.3em;
+}
+
+.label {
+    font-size: 1.5em;
+}

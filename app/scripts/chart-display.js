@@ -12,7 +12,7 @@ let svgWidth = 1100;
 let barPadding = 10;
 
 let yearScale = d3.scaleBand()
-    .domain(d3.range(1993, 2012))    
+    .domain(d3.range(1993, 2013))    
     .range([margin.horizontal, svgWidth + margin.horizontal])
 
 //need to come back and make range dynamic
@@ -25,7 +25,7 @@ let yScale = d3.scaleLinear()
     .range([600,0])
 
 let yearAxis = d3.axisBottom(yearScale)   
-    .tickValues(d3.range(1993, 2012)) 
+    .tickValues(d3.range(1993, 2013)) 
 
 let crimeAxis = d3.axisLeft(yScale)
     .tickValues(d3.range(0, 2250000, 250000))
@@ -45,7 +45,6 @@ d3.tsv("./data/violent-crime.tsv", function (error, data) {
     if (error) throw error;
    
     let barWidth = svgWidth / data.length - barPadding;
-    // let mostCrime = 0;
 
     //takes all data and makes it into integers    
     data.forEach(function (d) {
@@ -54,11 +53,6 @@ d3.tsv("./data/violent-crime.tsv", function (error, data) {
         d["Robbery"] = parseInt(d["Robbery"].replace(/,/g, ""));
         d["Aggravated Assault"] = parseInt(d["Aggravated Assault"].replace(/,/g, ""));
         d["Violent Crime"] = parseInt(d["Violent Crime"].replace(/,/g, ""));
-
-        // if (d["Violent Crime"] > mostCrime) {
-        //     mostCrime = d["Violent Crime"];
-        // }
-       
     })
     
     let crimes = svg.selectAll(".crimes")
@@ -72,7 +66,7 @@ d3.tsv("./data/violent-crime.tsv", function (error, data) {
         .enter()
         .append("rect")
         .attr("class", function (d) { return d.data.Year })
-        .attr("x", margin.horizontal)
+        .attr("x", 2*margin.horizontal)
 
         //each bar takes up room equivalent to itself and its padding. The index keeps them spaced apart
         .attr("transform", function (d, i) { return "translate(" + i * (barWidth + barPadding)  + "," + crimeScale(d[0]) +")" })
@@ -85,15 +79,72 @@ d3.tsv("./data/violent-crime.tsv", function (error, data) {
   
 })          
 
-
 svg.append("g")
-    .attr("class", "axis")     
-    .attr("transform", "translate(0,900)")
+    .attr("class", "x axis")     
+    .attr("transform", "translate(65,880)")
     .call(yearAxis)
 
-    .append("g")
-    .attr("class", "axis")
-    .attr("transform", "translate(70,-" + (svgHeight - 2*margin.vertical - 30) + ")")
+svg.append("g")
+    .attr("class", "y axis")
+    .attr("transform", "translate(135,270)")
+    // .attr("transform", "translate(70,-" + (svgHeight - 2*margin.vertical - 50) + ")")
     .call(crimeAxis)
+
+
+//all that follows is poor implementation
+
+svg.append("text")
+    .attr("class", "label")    
+    .attr("y", 925)
+    .attr("x", 600)
+    .text("Year")
+
+svg.append("text")   
+    .attr("class", "label")    
+    .attr("transform", "translate(30,600)rotate(-90)")
+    .text("Total Number of Violent Crimes")
+
+svg.append("text")
+    .attr("id", "title")
+    .attr("x", 300)
+    .attr("y", 50)
+    .text("Violent Crime in the United States")
+
+
+//this is even more garbage. more of a temporary thing until figure out actual implementation
+svg.append("rect")
+    .attr("x", 995)
+    .attr("y", 100)
+    .attr("height", 105)
+    .attr("width", 210)
+    .attr("fill", "white")
+
+svg.append("text")
+    .attr("font-size", "1.5em")    
+    .attr("x", 1000)
+    .attr("y", 125)
+    .style("fill", "navy")
+    .text("Aggravated Assault")
+
+svg.append("text")
+    .attr("font-size", "1.5em")    
+    .attr("x", 1000)
+    .attr("y", 150)
+    .style("fill", "maroon")
+    .text("Robbery")
+
+svg.append("text")
+    .attr("font-size", "1.5em")        
+    .attr("x", 1000)
+    .attr("y", 175)
+    .style("fill", "orange")
+    .text("Rape")
+
+svg.append("text")
+    .attr("font-size", "1.5em")        
+    .attr("x", 1000)
+    .attr("y", 200)
+    .style("fill", "teal")
+    .text("Murder")
 
                                                            
