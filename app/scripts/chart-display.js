@@ -53,6 +53,7 @@ d3.tsv("./data/violent-crime.tsv", function (error, data) {
         d["Robbery"] = parseInt(d["Robbery"].replace(/,/g, ""));
         d["Aggravated Assault"] = parseInt(d["Aggravated Assault"].replace(/,/g, ""));
         d["Violent Crime"] = parseInt(d["Violent Crime"].replace(/,/g, ""));
+        d["Population"] = parseInt(d["Population"].replace(/,/g, ""));
     })
     
     let crimes = svg.selectAll(".crimes")
@@ -72,9 +73,12 @@ d3.tsv("./data/violent-crime.tsv", function (error, data) {
         .attr("transform", function (d, i) { return "translate(" + i * (barWidth + barPadding)  + "," + crimeScale(d[0]) +")" })
         .attr("width", barWidth)
         
+        .attr("count", function(d,i) { return d[1]-d[0]})
         .attr("size", function(d) { return crimeScale(d[1]) -crimeScale(d[0])})
         .attr("y", function (d) {return svgHeight + margin.vertical - crimeScale(d[0]) - crimeScale(d[1])})
         .attr("height", function (d) { return crimeScale(d[1]) - crimeScale(d[0]) })    
+    
+        // .on("mouseover", function(d,i) {console.log(d) })
   
   
 })          
@@ -112,7 +116,7 @@ svg.append("text")
 
 
 //this is even more garbage. more of a temporary thing until figure out actual implementation
-svg.append("rect")
+let legend = svg.append("rect")
     .attr("x", 995)
     .attr("y", 100)
     .attr("height", 105)
