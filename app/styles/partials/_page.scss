@@ -3,42 +3,40 @@ body {
     background-color: gray
 }
 
-.tooltip {
-    width: 375px;
-    height: 160px;
+#sources {
+    margin-top:15px;
+    height: 100px;
+    width: 50%;
+
     position: absolute;
-
-    background-color: white;
-
-    table {
-        width: 100%;
-
-        caption {
-        padding-bottom: 10px;
-        font-size: 150%;
-        line-height: 150%;
-        background-color: black;
-        border: 1px solid white;
-        color: white;
-        }
-        tbody {
-            tr {
-                color: white;
-            }
-            tr:first-child {
-                background-color: $barThree;
-            }
-            tr:nth-child(2) {
-                background-color: $barTwo;
-            }
-            tr:nth-child(3) {
-                background-color: $barOne;
-            }
-            tr:nth-child(4) {
-                background-color: $barFour;
-            }
-        }
-    }
-    
+    cursor: pointer;
+    right: 0;
+    bottom: -15px;
+    display: none;
+    background-color: lightgray;
 }
+#portfolio,
+#sources-toggle {
+    float: left;
+    width: 50%;
+    height: 50px;
+    margin-top: 15px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 2em;
+    color: black;
+
+    a{
+        text-decoration: none;
+    }
+}
+#portfolio {
+    background-color: darkgray;
+}
+
+#sources-toggle {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
 

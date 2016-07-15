@@ -1,0 +1,42 @@
+#tooltip {
+    width: 375px;
+    height: 255px;
+    position: absolute;
+    display: none;
+
+    background-color: white;
+
+    table {
+        width: 100%;
+
+        caption {
+        padding-bottom: 10px;
+        font-size: 150%;
+        line-height: 150%;
+        background-color: black;
+        border: 1px solid white;
+        color: white;
+        }
+        tbody {
+            tr {
+                color: white;
+            }
+            tr:first-child {
+                background-color: $barThree;
+            }
+            tr:nth-child(2) {
+                background-color: $barTwo;
+            }
+            tr:nth-child(3) {
+                background-color: $barOne;
+            }
+            tr:nth-child(4) {
+                background-color: $barFour;
+            }
+            tr:nth-child(5) {
+                background-color: black;
+            }
+        }
+    }
+    
+}

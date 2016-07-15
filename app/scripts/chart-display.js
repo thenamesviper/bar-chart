@@ -31,8 +31,7 @@ let crimeAxis = d3.axisLeft(yScale)
     .tickValues(d3.range(0, 2250000, 250000))
 
  
-let svg = d3.select("body")
-    .append("svg")
+let svg = d3.select("#mySvg")
     .attr("height", svgHeight + 2*margin.vertical)
     .attr("width", svgWidth + 2*margin.horizontal)
 
@@ -114,6 +113,12 @@ svg.append("text")
     .attr("y", 50)
     .text("Violent Crime in the United States")
 
+svg.append("text")
+    .attr("id", "source")    
+    .attr("x", 590)
+    .attr("y", 90)
+    .text("(Source: FBI)")
+
 
 //this is even more garbage. more of a temporary thing until figure out actual implementation
 let legend = svg.append("rect")
@@ -121,7 +126,7 @@ let legend = svg.append("rect")
     .attr("y", 100)
     .attr("height", 105)
     .attr("width", 210)
-    .attr("fill", "white")
+    .attr("fill", "lightgray")
 
 svg.append("text")
     .attr("font-size", "1.5em")    
@@ -151,4 +156,3 @@ svg.append("text")
     .style("fill", "teal")
     .text("Murder")
 
-                                                           

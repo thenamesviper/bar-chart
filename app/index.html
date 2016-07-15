@@ -9,46 +9,83 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
 
-    <!-- build:css styles/vendor.css -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    <!-- endbuild -->
-    
+  
     <link rel = "stylesheet" href = "styles/reset.css">
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
     
-    <!-- build:js scripts/vendor/modernizr.js -->
-    <!--<script src="/bower_components/modernizr/modernizr.js"></script>-->
-    <!-- endbuild -->
+   
   </head>
   <body>
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <div id = "tooltip">
+    <table>
+      <caption>
+        Year
+      </caption>
+      <thead>
+        <th>Crime</th>
+        <th>Total Number</th>
+        <th>Percent of Total</th>
+        <th>Per 100,000 people</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Aggravated Assault</td>
+          <td>Assault #</td>
+          <td>Assault Percent</td>
+          <td>Assault Rate</td>
+          </td>
+        </tr>
+        <tr>
+          <td>Robbery</td>
+          <td>Robbery #</td>
+          <td>Assault Percent</td>
+          <td>Robbery Rate</td>
+        </tr>
+        <tr>
+          <td>Rape</td>
+          <td>Rape #</td>
+          <td>Rape Percent</td>
+          <td>Rape Rate</td>
+        </tr>
+        <tr>
+          <td>Murder</td>
+          <td>Murder #</td>
+          <td>Murder percent</td>
+          <td>Murder Rate</td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td>Total #</td>
+          <td>100%</td>
+          <td>Total Rate</td>
+      </tbody>
+    </table>
+    </div>
+    <svg id = "mySvg"></svg>
+    <div id = "sources">
+      Created for <a href = "www.freecodecamp.com">FreeCodeCamp</a><br/>
+      Created using a <a href = "http://yeoman.io/">Yeoman generator</a></br>
+      All data from the FBI at <a href = "https://www.fbi.gov/about-us/cjis/ucr/crime-in-the-u.s/2012/crime-in-the-u.s.-2012/tables/1tabledatadecoverviewpdf/table_1_crime_in_the_united_states_by_volume_and_rate_per_100000_inhabitants_1993-2012.xls">this address</a><br/>
+      GitHub for project <a href = "https://github.com/thenamesviper/bar-chart">found here</a>
+    </div>
+    <div id = "footer">
+      <a href = "http://codepen.io/thenamesviper/full/grWNeJ/"><div id = "portfolio">Portfolio</div></a>
+      <div id = "sources-toggle">Sources</div>
+    </div>
+   
 
-    
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='https://www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
-
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-
+ 
    <script src="https://d3js.org/d3.v4.min.js"></script>
 
     
     <script src="scripts/chart-display.js"></script>
     <script src="scripts/chart-interact.js"></script>
+    <script src="scripts/sources-interact.js"></script>
   </body>
 </html>
